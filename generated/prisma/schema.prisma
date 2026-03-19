@@ -1,0 +1,20 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  userId    String
+  pinned    Boolean  @default(false)
+  color     String   @default("#ffffff")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
